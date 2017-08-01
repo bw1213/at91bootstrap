@@ -473,6 +473,9 @@ static unsigned int set_default_sn(void)
 #elif defined(CONFIG_SAMA5D2_XPLAINED)
 	board_id_ek = BOARD_ID_SAMA5D2_XULT;
 	vendor_ek = VENDOR_ATMEL_RFO;
+#elif defined(CONFIG_SAMA5D2_SISOUL_PLATFORM)
+	board_id_ek = BOARD_ID_SAMA5D2_SISOUL_PLATFORM;
+	vendor_ek = VENDOR_SISOUL;
 #else
 #error "OneWire: No defined board"
 #endif
@@ -540,6 +543,13 @@ static unsigned int set_default_rev(void)
 	rev_id_cm = '1';
 	rev_id_dm = '1';
 	rev_id_ek = '1';
+#elif defined(CONFIG_SAMA5D2_SISOUL_PLATFORM)
+	rev_cm = 'A';
+	rev_dm = 'A';
+	rev_ek = 'A';
+	rev_id_cm = '0';
+	rev_id_dm = '0';
+	rev_id_ek = '0';
 #else
 #error "OneWire: No defined board"
 #endif

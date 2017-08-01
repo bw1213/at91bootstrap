@@ -96,6 +96,10 @@
 #include "sama5d2_xplained.h"
 #endif
 
+#ifdef CONFIG_SAMA5D2_SISOUL_PLATFORM
+#include "sama5d2_sisoul_platform.h"
+#endif
+
 #ifdef CONFIG_SAMA5D27_SOM1_EK
 #include "sama5d27_som1_ek.h"
 #endif
