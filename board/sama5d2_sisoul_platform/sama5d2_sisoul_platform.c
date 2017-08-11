@@ -256,7 +256,7 @@ static int matrix_init(void)
 #if defined(CONFIG_DDR3)
 static void ddramc_reg_config(struct ddramc_register *ddramc_config)
 {
-	ddramc_config->mdr = (AT91C_DDRC2_DBW_32_BITS
+	ddramc_config->mdr = (AT91C_DDRC2_DBW_16_BITS
 				| AT91C_DDRC2_MD_DDR3_SDRAM);
 
 	ddramc_config->cr = (AT91C_DDRC2_NC_DDR10_SDR9
@@ -842,8 +842,8 @@ unsigned int at91_twi0_hw_init(void)
 	unsigned int base_addr = AT91C_BASE_TWI0;
 
 	const struct pio_desc twi_pins[] = {
-		{"TWD0", AT91C_PIN_PD(21), 0, PIO_DEFAULT, PIO_PERIPH_B},
-		{"TWCK0", AT91C_PIN_PD(22), 0, PIO_DEFAULT, PIO_PERIPH_B},
+		{"TWD0", AT91C_PIN_PC(27), 0, PIO_DEFAULT, PIO_PERIPH_E},
+		{"TWCK0", AT91C_PIN_PC(28), 0, PIO_DEFAULT, PIO_PERIPH_E},
 		{(char *)0, 0, 0, PIO_DEFAULT, PIO_PERIPH_A},
 	};
 
@@ -903,19 +903,19 @@ int at91_board_act8865_set_reg_voltage(void)
 	if (ret)
 		dbg_loud("ACT8865: Failed to make REG5 output 3300mV\n");
 
-	/* Enable REG6 output 2.5V */
+	/* Enable REG6 output 3.6V */
 	reg = REG6_0;
-	value = ACT8865_2V5;
+	value = ACT8865_3V6;
 	ret = act8865_set_reg_voltage(reg, value);
 	if (ret)
-		dbg_loud("ACT8865: Failed to make REG6 output 2500mV\n");
+		dbg_loud("ACT8865: Failed to make REG6 output 3600mV\n");
 
-	/* Enable REG7 output 1.8V */
+	/* Enable REG7 output 3.3V */
 	reg = REG7_0;
-	value = ACT8865_1V8;
+	value = ACT8865_3V3;
 	ret = act8865_set_reg_voltage(reg, value);
 	if (ret)
-		dbg_loud("ACT8865: Failed to make REG7 output 1800mV\n");
+		dbg_loud("ACT8865: Failed to make REG7 output 3300mV\n");
 
 	/* Enable REG2 output 1.2V */
 	reg = REG2_1;

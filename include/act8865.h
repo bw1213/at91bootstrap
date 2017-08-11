@@ -79,6 +79,7 @@
 #define ACT8865_1V8	0x24
 #define ACT8865_2V5	0x31
 #define ACT8865_3V3	0x39
+#define ACT8865_3V6	0x3C
 
 #define ACT8865_INVALID_LDO_VOLTAGE(mV) ((mV) < 600 && (mV) > 3900)
 
